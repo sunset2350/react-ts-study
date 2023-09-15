@@ -13,15 +13,16 @@ import metadata from "./module";
 // module.appName
 
 
+// 타입 추론
+// let name = "Javascript!!";
+let name : String;
+name = "JavaScript"
 
-const name = "Javascript";
-
-
-// console.log(
-//   greet(`${name}-${appName}
-//   -${metadata.version}-${metadata.creator}
-//   -${user.name}-${user.age}`)
-//   );
+console.log(
+  greet(`${name}-${appName}
+  -${metadata.version}-${metadata.creator}
+  -${user.name}-${user.age}`,"male")
+  );
 
   document.getElementById("root").innerHTML = greet(`${name}-${appName}
   -${metadata.version}-${metadata.creator}
