@@ -29,12 +29,18 @@ module.exports = {
           target: "es2017", // 지원하는 ECMAScript 버전 설정
         },
       },
+      {
+        test: /\.(gif|jpg|png|webp|svg|mp4)$/,
+        type: "asset/resource",
+      },
     ],
   },
   // 번들링이 완료된 결과물에 대한 설정
   output: {
     // 번들 파일에 해시추가
     filename: "js/[name]-[chunkhash].js",
+    // 이미지/동영상같은 정적파일들의 위치와 파일형식
+    assetModuleFilename: "asset/[hash][ext][query]",
     // 결과물들의 위치
     path: __dirname + "/dist",
     clean: true, // 기존 빌드 결과물 삭제
@@ -56,5 +62,6 @@ module.exports = {
   // 램디스크처럼 ./dist/index.html, ./dist/bundle.js
   devServer: {
     static: "./dist",
+    open: true,
   },
 };

@@ -3,7 +3,7 @@
 // person.username
 // person.age
 
-import { appName, greet,user } from "./module";
+import { appName, greet, user } from "./module";
 // 디폴트 모듈
 // 자동완성으로 파일명하고 모듈명을 동일하게 해줌
 // import module from ".module";
@@ -12,18 +12,20 @@ import metadata from "./module";
 // const module = require("./module")
 // module.appName
 
-
 // 타입 추론
 // let name = "Javascript!!";
-let name : String;
-name = "JavaScript"
+let name: String;
+name = "JavaScript";
 
 console.log(
-  greet(`${name}-${appName}
+  greet(
+    `${name}-${appName}
   -${metadata.version}-${metadata.creator}
-  -${user.name}-${user.age}`,"male")
-  );
+  -${user.name}-${user.age}`,
+    "male"
+  )
+);
 
-  document.getElementById("root").innerHTML = greet(`${name}-${appName}
+document.getElementById("root").innerHTML = greet(`${name}-${appName}
   -${metadata.version}-${metadata.creator}
   -${user.name}-${user.age}`);
