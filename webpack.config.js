@@ -10,6 +10,11 @@ module.exports = {
   // entry 부터 시작해서 확장자가 ts/js인 파일들을 번들링하겠다.
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    // 경로에 대한 alias(별칭) 설정
+    alias: {
+      // "@": [path.resolve(__dirname, "src")],
+      "@": __dirname + "/src",
+    },
   },
   // 모듈 해석기
   module: {
@@ -61,6 +66,7 @@ module.exports = {
   // 램(ram)에 파일디렉터리 형태로 구조를 만들어서 저장
   // 램디스크처럼 ./dist/index.html, ./dist/bundle.js
   devServer: {
+    historyApiFallback: true,
     static: "./dist",
     open: true,
   },

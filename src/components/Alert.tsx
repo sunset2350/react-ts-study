@@ -12,7 +12,7 @@ const Alert = ({ message, onClose }: AlertProps) => {
 
   useEffect(
     function () {
-      console.log("메시지가 초기화되거나 변경되었습니다.");
+      // console.log("메시지가 초기화되거나 변경되었습니다.");
       console.log(message);
     },
     [message]
