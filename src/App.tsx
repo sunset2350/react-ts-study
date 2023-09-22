@@ -5,10 +5,10 @@ import Home from "./pages/Home";
 import Layout from "./Layout";
 import { Suspense, lazy } from "react";
 
-const ContactSidebar = lazy(() => import("./contacts/ContactSidebar"));
-const ContactList = lazy(() => import("./contacts/ContactList"));
-const ContactDetail = lazy(() => import("./contacts/ContactDetail"));
-const ContactForm = lazy(() => import("./contacts/ContactForm"));
+const ContactSidebar = lazy(() => import("./modules/contacts/ContactSidebar"));
+const ContactList = lazy(() => import("./modules/contacts/ContactList"));
+const ContactDetail = lazy(() => import("./modules/contacts/ContactDetail"));
+const ContactForm = lazy(() => import("./modules/contacts/ContactForm"));
 
 // Lazy-loading 기법
 // 동적인 import 방식 + lazy
@@ -24,10 +24,12 @@ const Todo = lazy(() => {
     default: React.ComponentType;
   }>((resolve) =>
     setTimeout(() => {
-      resolve(import("@/components/todo/Todo"));
+      resolve(import("@/modules/todo/Todo"));
     }, 500)
   );
 });
+
+const ProfileEdit = lazy(() => import("@/modules/Profile/ProfilesEdit"));
 
 const App = () => {
   // 라우팅 처리하는 곳의 가장 최상위에 BrowserRouter 감싸줘야함
@@ -43,6 +45,8 @@ const App = () => {
           {/* index: 해당경로의 기본 화면 */}
           <Route element={<Home />} index />
           {/* 기능 모듈 */}
+          <Route path="/profile/edit" element={<ProfileEdit />} />
+
           <Route path="todo" element={<Todo />} index />
           {/* /contacts */}
           <Route path="contacts" element={<ContactSidebar />}>

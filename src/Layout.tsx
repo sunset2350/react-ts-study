@@ -1,29 +1,28 @@
 import { Suspense } from "react";
-import { Link, Outlet } from "react-router-dom";
-import {
-  ProfileData,
-  useProfileData,
-} from "./modules/Profile/ProfileView/data";
-
-// 타입을 마지막에 넣을 떄(추가) 사용
-// function Layout() {
-//   const { nickname, email } = {
-//     nickname: "Alice",
-//     email: "alice@gmail.com",
-//   } as ProfileData;
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useProfileData } from "./modules/Profile/data";
 
 function Layout() {
   // swr 데이터 -> 상태값
   // 데이터가 변경되면 컴포넌트가 다시 렌더링된다.
-  const { ProfileData, mutateProfileData } = useProfileData();
-  console.log(ProfileData);
+  const { profileData } = useProfileData();
+  const { nickname } = profileData;
+  // console.log(profileData);
+
+  const navigate = useNavigate();
+
+  const handleEditProfile = () => {
+    navigate("/profile/edit");
+  };
 
   return (
     <div>
       <header>
-        <em>{ProfileData.nickname}</em>
+        <em style={{ cursor: "pointer" }} onClick={handleEditProfile}>
+          {nickname}
+        </em>
       </header>
-      {/* 링크들이 있는 네비게이션 위치 */}
+      {/* 링크들이 들어가는 곳 */}
       <nav>
         <ul style={{ display: "flex", gap: "40px" }}>
           <li>
@@ -31,7 +30,9 @@ function Layout() {
           </li>
           <li>
             {/* 페이지 이동 */}
-            {/* url에 맞는 컴포넌트로만 로딩(a herf는 안좋음) */}
+            {/* <a href="/todo">Todo</a> */}
+
+            {/* url에 맞는 컴포넌트만 로딩 */}
             <Link to="/todo">Todo</Link>
           </li>
           <li>
@@ -49,4 +50,5 @@ function Layout() {
     </div>
   );
 }
+
 export default Layout;

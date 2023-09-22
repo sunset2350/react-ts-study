@@ -1,10 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import useContactData from "../data";
 
 const ContactList = () => {
-  const contacts = [
-    { id: 1, name: "Alice", phone: "010-1234-5678" },
-    { id: 2, name: "John", phone: "010-1414-123123" },
-  ];
+  const { ContactsData: contacts } = useContactData();
 
   const handleClickItem = (id: number) => {
     navigate(`/contacts/detail/${id}`);
