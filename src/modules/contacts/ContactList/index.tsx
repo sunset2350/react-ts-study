@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import useContactData from "../data";
+import { useContactsData } from "../data";
 
 const ContactList = () => {
-  const { ContactsData: contacts } = useContactData();
+  const { contactsData: contacts } = useContactsData();
+
+  console.log(contacts);
+
+  const navigate = useNavigate();
 
   const handleClickItem = (id: number) => {
     navigate(`/contacts/detail/${id}`);
   };
-  const navigate = useNavigate();
 
   return (
     <div>
@@ -16,7 +19,7 @@ const ContactList = () => {
         {contacts.map((c) => (
           <li
             style={{ cursor: "pointer" }}
-            key={`itme-${c.id}`}
+            key={`item-${c.id}`}
             onClick={() => {
               handleClickItem(c.id);
             }}

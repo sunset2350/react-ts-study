@@ -6,13 +6,12 @@ interface ContactData {
   phone: string;
 }
 
-export const useContactData = () => {
-  const { data: ContactsData, mutate: mutateContactData } = useSWR<
+export const useContactsData = () => {
+  const { data: contactsData, mutate: mutateContactsData } = useSWR<
     ContactData[]
   >("@data/contacts", {
     fallbackData: [],
   });
-  return { ContactsData, mutateContactData };
-};
 
-export default useContactData;
+  return { contactsData, mutateContactsData };
+};
